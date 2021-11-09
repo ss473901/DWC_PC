@@ -1,0 +1,2 @@
+module Proposer::FunsHelper
+end

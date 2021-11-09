@@ -1,0 +1,2 @@
+module Proposer::IdeasHelper
+end

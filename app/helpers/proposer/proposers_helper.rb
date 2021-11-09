@@ -1,0 +1,2 @@
+module Proposer::ProposersHelper
+end

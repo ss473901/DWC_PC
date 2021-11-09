@@ -1,3 +1,25 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  devise_for :users, skip: [:passwords,], controllers: {
+    registrations: "user/registrations",
+    sessions: 'user/sessions'
+  }
+
+  devise_for :proposers, skip: [:passwords,], controllers: {
+    registrations: "proposer/registrations",
+    sessions: "proposer/sessions"
+  }
+
+  namespace :user do
+    resources :users
+    resources :tasks
+    resources :ideas
+    resources :funs
+  end
+
+  namespace :proposer do
+    resources :proposers
+    resources :ideas
+    resources :funs
+  end
+
+  end
