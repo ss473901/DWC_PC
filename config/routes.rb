@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     registrations: "user/registrations",
     sessions: 'user/sessions'
   }
-
   devise_for :proposers, skip: [:passwords,], controllers: {
     registrations: "proposer/registrations",
     sessions: "proposer/sessions"
   }
+
+  root 'homes#top'
+  get 'homes/about' => 'homes#about'
 
   namespace :user do
     resources :users
