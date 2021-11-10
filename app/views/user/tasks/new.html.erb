@@ -1,3 +1,47 @@
+<script>
+  function hoge() {
+    // 要素の表示・非表示
+    var obj = document.getElementsByClassName("badge")[0];
+    if (obj.style.display == "none") {
+      obj.style.display = "block";
+    } else {
+      obj.style.display = "none";
+    }
+    var obj = document.getElementsByClassName("badge")[1];
+    if (obj.style.display == "none") {
+      obj.style.display = "block";
+    } else {
+      obj.style.display = "none";
+    }
+    var obj = document.getElementsByClassName("badge")[2];
+    if (obj.style.display == "none") {
+      obj.style.display = "block";
+    } else {
+      obj.style.display = "none";
+    }
+    var obj = document.getElementsByClassName("badge")[3];
+    if (obj.style.display == "none") {
+      obj.style.display = "block";
+    } else {
+      obj.style.display = "none";
+    }
+    var obj = document.getElementsByClassName("badge")[4];
+    if (obj.style.display == "none") {
+      obj.style.display = "block";
+    } else {
+      obj.style.display = "none";
+    }
+
+    // ボタンのテキストも変更
+    var btn = document.getElementsByClassName("idea-btn")[0];
+    if (btn.textContent == "アイデアを非表示にする？") {
+      btn.textContent = "アイデアを表示する？";
+    } else {
+      btn.textContent = "アイデアを非表示にする？";
+    }
+  }
+</script>
+
 <div class="container">
   <div class="row">
     <!--ToDo作成画面-->
@@ -32,8 +76,12 @@
                <td>
               </td>
               <td>
-                <i class="fas fa-pen mr-2"></i>
-                <i class="fas fa-trash-alt"></i>
+                <%= link_to edit_user_task_path(task), local:true do %>
+                  <i class="fas fa-pen mr-2"></i>
+                <% end %>
+                <%= link_to user_task_path(task), method: :delete, local:true do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
               </td>
             </tr>
             <% end %>
@@ -41,19 +89,19 @@
         </table>
       </div>
     </div>
-
     <!--Idea一覧画面-->
-    <div class="col-md-3 ">
-      <br></br><br>
-      <div>
-          <small class="text-muted pull-right">こんなのはどうかな？</small>
-          <%= image_tag "Do.png", width: "150px" %> <br>
-          <button type="button" class="btn btn-outline-secondary mt-1">アイデアを表示する</button>
-      </div>
-
-
     <div class="col-md-3">
-
+      <div>
+        <small class="text-muted pull-right">こんなのはどうかな？</small>
+        <%= image_tag "Do.png", width: "150px" %> <br>
+        <button type="button" class="btn btn-outline-secondary mt-1 idea-btn" onclick="hoge()">アイデアを表示する?</button>
+      </div>
     </div>
-  </div>
+    <div class="col-md-3">
+      <h2 class="text-center"><span class="badge">散歩に行く</span></h2>
+      <h2 class="text-center"><span class="badge">本を読む</span></h2>
+      <h2 class="text-center"><span class="badge">買い物に行く</span></h2>
+      <h2 class="text-center"><span class="badge">ラジオ体操する</span></h2>
+      <h2 class="text-center"><span class="badge">瞑想をする</span></h2>
+    </div>
 </div>

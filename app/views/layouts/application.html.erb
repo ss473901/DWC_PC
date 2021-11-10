@@ -9,7 +9,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/ac5873e769.js" crossorigin="anonymous"></script>
   </head>
-
   <body class="d-flex flex-column vh-100">
     <header>
       <nav class="navbar navbar-expand-lg">
@@ -22,7 +21,7 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <button class="btn btn-default">
-                <%= link_to"Cutoって？", homes_about_path, class: 'btn btn-default' %>
+                <%= link_to"CuToって？", homes_about_path, class: 'btn btn-default' %>
               </button>
               <button class="btn btn-default">
                 <%= link_to "ToDo作る？", new_user_task_path, class: 'nav-link text-dark' %>
@@ -35,7 +34,7 @@
               </button>
             <% else %>
               <button class="btn btn-default">
-                <%= link_to"Cutoって？", homes_about_path, class: 'nav-link text-dark' %>
+                <%= link_to"CuToって？", homes_about_path, class: 'nav-link text-dark' %>
               </button>
               <button class="btn btn-default">
                 <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
