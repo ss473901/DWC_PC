@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <!--ToDo作成画面-->
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-2">
+          <%= image_tag "sanpo.png", width: "150px" %>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+          </br>
+          <p>お疲れ様。今日は何する？</p>
+          <%= form_with model:@task, url:user_tasks_path, local:true do |f| %>
+            <%= f.text_field :content %><%= f.submit '登録' %>
+          <% end %>
+        </div>
+      </div>
+    <!--ToDo一覧画面-->
+      <div class="row">
+        <table class="table table-hover">
+          <tbody>
+            <% @tasks.each do |task| %>
+            <tr>
+              <td>
+                <input type="checkbox" class="mr-2">
+              </td>
+              <td>
+                <%= task.content %>
+              </td>
+              <td>
+              </td>
+               <td>
+              </td>
+              <td>
+                <i class="fas fa-pen mr-2"></i>
+                <i class="fas fa-trash-alt"></i>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--Idea一覧画面-->
+    <div class="col-md-3 ">
+      <br></br><br>
+      <div>
+          <small class="text-muted pull-right">こんなのはどうかな？</small>
+          <%= image_tag "Do.png", width: "150px" %> <br>
+          <button type="button" class="btn btn-outline-secondary mt-1">アイデアを表示する</button>
+      </div>
+
+
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</div>
