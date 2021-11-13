@@ -3,12 +3,13 @@ class User::TasksController < ApplicationController
   def new
     @task = Task.new
     @tasks = Task.all
+    @ideas = Idea.all
   end
 
   def create
     task = Task.new(task_params)
     task.user_id = current_user.id
-    task.save
+    task.save!
     redirect_back(fallback_location: root_path)
   end
 

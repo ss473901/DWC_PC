@@ -27,10 +27,23 @@
                 <%= link_to "ToDo作る？", new_user_task_path, class: 'nav-link text-dark' %>
               </button>
               <button class="btn btn-default">
-                <%= link_to "疲れたときは…", user_funs_path, class: 'nav-link text-dark' %>
+                <%= link_to "疲れたときは…", new_user_fun_path, class: 'nav-link text-dark' %>
               </button>
               <button class="btn btn-default">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+              </button>
+            <% elsif proposer_signed_in? %>
+               <button class="btn btn-default">
+                <%= link_to"CuToって？", homes_about_path, class: 'btn btn-default' %>
+              </button>
+              <button class="btn btn-default">
+                <%= link_to "提案する？",  new_proposer_idea_path, class: 'nav-link text-dark' %>
+              </button>
+              <button class="btn btn-default">
+                <%= link_to "今まで提案したこと", proposer_ideas_path, class: 'nav-link text-dark' %>
+              </button>
+              <button class="btn btn-default">
+                <%= link_to "ログアウト", destroy_proposer_session_path, method: :delete, class: 'nav-link text-dark' %>
               </button>
             <% else %>
               <button class="btn btn-default">
@@ -41,6 +54,12 @@
               </button>
               <button class="btn btn-default">
                 <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+              </button>
+              <button class="btn btn-default">
+                <%= link_to "新規登録(提案者)", new_proposer_registration_path, class: 'nav-link text-dark' %>
+              </button>
+              <button class="btn btn-default">
+                <%= link_to "ログイン(提案者)", new_proposer_session_path, class: 'nav-link text-dark' %>
               </button>
             <% end %>
             </ul>
@@ -54,7 +73,7 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 offset"><%= image_tag "keybord.png", width: "500px" %></div>
+          <div class="col-md-8 offset"><%= image_tag "keybord.png", width: "1000px" %></div>
         </div>
       </div>
     </footer>

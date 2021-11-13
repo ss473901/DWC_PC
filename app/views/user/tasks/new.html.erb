@@ -7,30 +7,6 @@
     } else {
       obj.style.display = "none";
     }
-    var obj = document.getElementsByClassName("badge")[1];
-    if (obj.style.display == "none") {
-      obj.style.display = "block";
-    } else {
-      obj.style.display = "none";
-    }
-    var obj = document.getElementsByClassName("badge")[2];
-    if (obj.style.display == "none") {
-      obj.style.display = "block";
-    } else {
-      obj.style.display = "none";
-    }
-    var obj = document.getElementsByClassName("badge")[3];
-    if (obj.style.display == "none") {
-      obj.style.display = "block";
-    } else {
-      obj.style.display = "none";
-    }
-    var obj = document.getElementsByClassName("badge")[4];
-    if (obj.style.display == "none") {
-      obj.style.display = "block";
-    } else {
-      obj.style.display = "none";
-    }
 
     // ボタンのテキストも変更
     var btn = document.getElementsByClassName("idea-btn")[0];
@@ -40,6 +16,7 @@
       btn.textContent = "アイデアを非表示にする？";
     }
   }
+
 </script>
 
 <div class="container">
@@ -98,10 +75,18 @@
       </div>
     </div>
     <div class="col-md-3">
-      <h2 class="text-center"><span class="badge">散歩に行く</span></h2>
-      <h2 class="text-center"><span class="badge">本を読む</span></h2>
-      <h2 class="text-center"><span class="badge">買い物に行く</span></h2>
-      <h2 class="text-center"><span class="badge">ラジオ体操する</span></h2>
-      <h2 class="text-center"><span class="badge">瞑想をする</span></h2>
+      <h2 class="text-center"><span class="badge">
+          <table class="table-hover">
+            <tbody id="ideaArea">
+              <% @ideas.each do |idea| %>
+              <tr>
+                <td>
+                  <%= idea.content %> <br>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </span></h2>
     </div>
 </div>

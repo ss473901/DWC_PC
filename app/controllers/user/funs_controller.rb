@@ -1,4 +1,9 @@
 class User::FunsController < ApplicationController
-  def index
+  def new
   end
+
+  def index
+    @funs = Fun.all
+  end
+
 end

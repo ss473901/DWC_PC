@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="container">
+    <div class="column is-centered">
+      <div class="column is-8">
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <figure class="image is-128x128" style="margin-left: auto; margin-right: auto;">
+            </figure>
+          </div>
+          <div class="column is-8">
+            <table class="table is-fullwidth">
+              <tr>
+                <td>
+                  <%= image_tag "sanpo.png", width: "150px" %>
+                  <h6>提案を変更する？</h6>
+                </td>
+                <%= form_with model: @idea, url: proposer_idea_path(@idea),local: true do |f| %>
+                <td>
+                  <br></br><%= f.text_field :content,class:"form-control" %>
+                </td>
+                <td>
+                  <br><br>
+                  <%= f.submit'登録',class:"btn btn-outline-secondary mt-1" %>
+                  <% end %>
+                  <%= link_to'戻る', proposer_ideas_path, class:"btn btn-outline-secondary mt-1" %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+  </div>
+  <div class="row">
+    <!--ToDoの-->
+    <div class="col-md-6">
+      ToDoアイデア
+      <%= form_with model:@idea, url:proposer_ideas_path, local:true do |f| %>
+        <%= f.text_field :content %>
+        <%= f.submit'提案する' %>
+      <% end %>
+    </div>
+    <table class="table table-hover">
+      <tbody>
+       <% @ideas.each do |idea| %>
+        <tr>
+          <td><%= idea.content %>
+            <%= link_to edit_proposer_idea_path(idea), local:true do %>
+              <i class="fas fa-pen mr-2"></i>
+            <% end %>
+            <%= link_to proposer_idea_path(idea), method: :delete, local:true do %>
+              <i class="fas fa-trash-alt"></i>
+              <br>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <!--休みを提案-->
+    <div class="col-md-6">
+      休憩アイデア
+      <%= form_with model:@fun, url:proposer_funs_path, local:true do |f| %>
+        <%= f.text_field :content %>
+        <%= f.submit'提案する' %>
+      <% end %>
+    </div>
+    <table class="table table-hover">
+      <tbody>
+         <% @funs.each do |fun| %>
+          <tr>
+            <td><%= fun.content %>
+              <%= link_to edit_proposer_fun_path(fun), local:true do %>
+                <i class="fas fa-pen mr-2"></i>
+              <% end %>
+              <%= link_to proposer_fun_path(fun), method: :delete, local:true do %>
+                <i class="fas fa-trash-alt"></i>
+                <br>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

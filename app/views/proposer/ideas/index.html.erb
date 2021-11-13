@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>ToDoアイデア</h4>
+      <tbody>
+      <% @ideas.each do |idea| %>
+      <tr>
+        <td><%= idea.content %>
+          <%= link_to edit_proposer_idea_path(idea), local:true do %>
+            <i class="fas fa-pen mr-2"></i>
+          <% end %>
+          <%= link_to proposer_idea_path(idea), method: :delete, local:true do %>
+            <i class="fas fa-trash-alt"></i>
+            <br>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </div>
+    <div class="col">
+      <h4>休憩アイデア</h4>
+      <tbody>
+        <% @funs.each do |fun| %>
+        <tr>
+          <td><%= fun.content %></td>
+           <%= link_to edit_proposer_fun_path(fun), local:true do %>
+            <i class="fas fa-pen mr-2"></i>
+          <% end %>
+          <%= link_to proposer_fun_path(fun), method: :delete, local:true do %>
+            <i class="fas fa-trash-alt"></i>
+            <br>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </div>
+  </div>
+</div>
+
+
+
+
