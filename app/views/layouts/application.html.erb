@@ -10,10 +10,29 @@
     <script src="https://kit.fontawesome.com/ac5873e769.js" crossorigin="anonymous"></script>
   </head>
   <body class="d-flex flex-column vh-100">
+    <script>
+      function set2(num) {
+        // 桁数が1桁だったら先頭に0を加えて2桁に調整する
+        let ret;
+        if (num < 10) { ret = "0" + num; }
+        else { ret = num; }
+        return ret;
+      }
+      function onload() {
+        const nowTime = new Date(); //現在日時
+        const nowHour = set2(nowTime.getHours()); //時間
+        const nowMin = set2(nowTime.getMinutes()); //分
+        const nowSec = set2(nowTime.getSeconds()); //秒
+        const msg = nowHour + ":" + nowMin + ":" + nowSec ;
+        document.getElementById("showTime").innerHTML = msg;
+      }
+      setInterval('onload()', 1000);
+    </script>
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="/"><%= image_tag "logo.png", width: "200px" %></a>
+          <p id="showTime"></p>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

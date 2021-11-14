@@ -1,26 +1,39 @@
-<h2>Log in(提案者)</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-   <p>お疲れ様。この前登録したメールアドレスを教えてね</p>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<h3 class="ml-4">Log in(提案者)</h2>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-3">
+    <a class="navbar-brand" href="edit_proposer_path"><%= image_tag "icon.png", width: "400px" %></a>
   </div>
 
-  <div class="field">
-    <p>パスワードは？</p>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+<div class="col-md-7">
+    <br></br>
+    <br></br>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+       <p>お疲れ様。この前登録したメールアドレスを教えてね<br>
+        <span><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p>パスワードは？<br>
+        <span><%= f.password_field :password, autocomplete: "current-password" %></span>
+        </p>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+    <%= render "proposer/shared/links" %>
+
   </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "proposer/shared/links" %>
+</div>

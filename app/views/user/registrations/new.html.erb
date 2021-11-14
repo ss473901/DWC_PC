@@ -1,3 +1,4 @@
+<h3 class="ml-4">Sign up(利用者)</h3>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-3">
@@ -8,26 +9,29 @@
       <%= render "user/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <p>お名前は？</p>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <p>お名前は？<br>
+        <span><%= f.text_field :name, autofocus: true, autocomplete: "name" %></span>
+        </p>
       </div>
 
       <div class="field">
-        <p>メールアドレスは？</p>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <p>メールアドレスは？<br>
+        <span><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+        </p>
       </div>
 
       <div class="field">
-        <p>パスワードを決めてね。ちゃんとメモしなよ？</p>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <p>パスワードを決めてね。
+        <% if @minimum_password_length %>(<%= @minimum_password_length %> characters minimum)
+        <% end %><br>
+        <span><%= f.password_field :password, autocomplete: "new-password" %></span>
+        </p>
       </div>
 
       <div class="field">
-        <p>不安だからパスワード。もう一度教えてくれる？</p>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <p>不安だからパスワード。もう一度教えてくれる？<br>
+        <span><%= f.password_field :password_confirmation, autocomplete: "new-password" %></span>
+        </p>
       </div>
 
       <div class="actions">

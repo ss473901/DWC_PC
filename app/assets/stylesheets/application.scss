@@ -17,14 +17,25 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-
+//フォント
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap');
-h6,h2,p,div {
+h6,,h5,h4,h3,h2,h1,p,div {
  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
+// 休憩画面の背景
 .main-container {
   background-image: image-url("backgroud_fun.png");
   height: 400px;
   background-size: cover;
+}
+
+
+.main{
+ height : 700px;
+
+}
+
+footer{
+  height: 200px;
 }

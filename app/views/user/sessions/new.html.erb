@@ -1,3 +1,4 @@
+<h3 class="ml-4">Log in(利用者)</h2>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-3">
@@ -8,12 +9,14 @@
     <br></br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-       <p>お疲れ様。この前登録したメールアドレスを教えてね</p>
-       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+       <p>お疲れ様。この前登録したメールアドレスを教えてね<br>
+       <span><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+       </p>
       </div>
       <div class="field">
-        <p>パスワードは？</p>
-        <%= f.password_field :password, autocomplete: "current-password" %>
+        <p>パスワードは？<br>
+        <span><%= f.password_field :password, autocomplete: "current-password" %></span>
+        </p>
       </div>
       <% if devise_mapping.rememberable? %>
         <div class="field">
