@@ -1,4 +1,3 @@
-<h3 class="ml-4">Log in(提案者)</h2>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-3">
@@ -6,34 +5,30 @@
   </div>
 
 <div class="col-md-7">
-    <br></br>
-    <br></br>
+    <br>
+    <h4 class="mb-4">Log in(提案者)</h4>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
        <p>お疲れ様。この前登録したメールアドレスを教えてね<br>
-        <span><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+        <span><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control w50" %></span>
         </p>
       </div>
 
       <div class="field">
         <p>パスワードは？<br>
-        <span><%= f.password_field :password, autocomplete: "current-password" %></span>
+        <span><%= f.password_field :password, autocomplete: "current-password", class:"form-control w50"  %></span>
         </p>
       </div>
-
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
-
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "ログイン", class: "btn btn-success w-50 mt-2" %>
       </div>
     <% end %>
-
     <%= render "proposer/shared/links" %>
-
   </div>
 </div>

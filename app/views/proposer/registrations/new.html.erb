@@ -1,22 +1,22 @@
-<h3 class="ml-4">Sign up(提案者)</h3>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-3">
+    <br><br>
     <a class="navbar-brand" href="edit_proposer_path"><%= image_tag "icon.png", width: "400px" %></a>
   </div>
   <div class="col-md-7">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "proposer/shared/error_messages", resource: resource %>
-
+      <h4 class="mb-4">Sign up(提案者)</h4>
       <div class="field">
         <p>お名前は？<br>
-        <span><%= f.text_field :name, autofocus: true, autocomplete: "name" %></span>
+        <span><%= f.text_field :name, autofocus: true, autocomplete: "name",class:"form-control w50" %></span>
         </p>
       </div>
 
       <div class="field">
         <p>メールアドレスは？<br>
-        <span><%= f.email_field :email, autofocus: true, autocomplete: "email" %></span>
+        <span><%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control w50"  %></span>
         </p>
       </div>
 
@@ -24,18 +24,18 @@
         <p>パスワードを決めてね。
         <% if @minimum_password_length %>(<%= @minimum_password_length %> characters minimum)
         <% end %><br>
-        <span><%= f.password_field :password, autocomplete: "new-password" %></span>
+        <span><%= f.password_field :password, autocomplete: "new-password",class:"form-control w50"  %></span>
         </p>
       </div>
 
       <div class="field">
         <p>不安だからパスワード。もう一度教えてくれる？<br>
-        <span><%= f.password_field :password_confirmation, autocomplete: "new-password" %></span>
+        <span><%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control w50"  %></span>
         </p>
       </div>
 
       <div class="actions">
-        <%= f.submit "登録" %>
+        <%= f.submit "登録", class: "btn btn-success w-50 mt-2" %>
       </div>
     <% end %>
 

@@ -31,8 +31,8 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="/"><%= image_tag "logo.png", width: "200px" %></a>
-          <p id="showTime"></p>
+          <a class="navbar-brand" href="/"><%= image_tag "logo.png", width: "150px" %></a>
+          <p id="showTime" class="mt-3"></p>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -86,13 +86,15 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
+    <main class="mb-5 mt-5">
+      <div class="main-visual">
       <%= yield %>
+      </div>
     </main>
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 offset"><%= image_tag "keybord.png", width: "1000px" %></div>
+          <div class="col-md-8 offset mt-5 mb-5"><%= image_tag "keybord.png", width: "1000px" %></div>
         </div>
       </div>
     </footer>

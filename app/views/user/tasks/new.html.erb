@@ -16,9 +16,7 @@
       btn.textContent = "アイデアを非表示にする？";
     }
   }
-
 </script>
-
 <div class="container">
   <div class="row">
     <!--ToDo作成画面-->
@@ -32,7 +30,8 @@
           </br>
           <p>お疲れ様。今日は何する？</p>
           <%= form_with model:@task, url:user_tasks_path, local:true do |f| %>
-            <%= f.text_field :content %><%= f.submit '登録' %>
+            <%= f.text_field :content, class:"form-control w-75" %>
+            <%= f.submit '登録', class: "btn btn-success w-75 mt-2" %>
           <% end %>
         </div>
       </div>
