@@ -54,5 +54,129 @@ footer{
 }
 
 .main-visual{
+  height: auto;
+}
+
+article {
+ width: 65%;
+ }
+
+ aside {
+ width: 29%;
+ }
+
+ .task-contents {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 50px;
+  }
+
+.header,.wrapper{
+  max-width: 100%;
+}
+
+.post-info {
+  position: relative;
+  padding-top: 40px;
+  margin-bottom: 40px;
+}
+
+.icon{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  padding-top: 10px;
+  border-radius: 50%;
+}
+
+.form{
+  position: absolute;
+  top: 0px;
+  padding-top: 35px;
+  margin-left: 360px;
+  width: 500px;
+}
+
+.form-button{
+  position: absolute;
+  top: 0px;
+  padding-top: 25px;
+  margin-left: 880px;
+  width: 100px;
+}
+
+.post-title{
+  margin-left: 120px;
+}
+
+
+.post-info2 {
+  position: relative;
+  padding-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+.idea-btn{
+  position: absolute;
+  top: 20px;
+  margin-left: 100px;
+  width: 200px;
+}
+
+.ideaArea{
+  display: none;
+}
+
+
+.suggestion{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.todo,.fun {
+  width : 48%;
+}
+
+.right{
+	text-align: right;
+}
+
+
+
+.image1 {
+  background-color: red;
+}
+.image2 {
+  background-color: blue;
+}
+.image3 {
+  background-color: green;
+}
+.image4 {
+  background-color: yellow;
+}
+.image5 {
+  background-color: black;
+}
+
+#container{
   height: 500px;
+}
+
+
+.parent {
+  display: flex;
+}
+
+.f-right {
+  margin-left: auto;    /* これ！！！ */
+}
+
+
+
+.task-font{
+  font-size: 20px;
 }

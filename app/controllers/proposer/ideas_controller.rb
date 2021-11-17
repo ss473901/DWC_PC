@@ -26,7 +26,6 @@ class Proposer::IdeasController < ApplicationController
   def update
     idea = Idea.find(params[:id])
     idea.update(idea_params)
-    redirect_to  proposer_ideas_path(idea)
   end
 
   def destroy

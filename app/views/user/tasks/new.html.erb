@@ -1,7 +1,8 @@
 <script>
   function hoge() {
     // 要素の表示・非表示
-    var obj = document.getElementsByClassName("badge")[0];
+
+    var obj = document.getElementsByClassName("ideaArea")[0];
     if (obj.style.display == "none") {
       obj.style.display = "block";
     } else {
@@ -10,82 +11,120 @@
 
     // ボタンのテキストも変更
     var btn = document.getElementsByClassName("idea-btn")[0];
-    if (btn.textContent == "アイデアを非表示にする？") {
-      btn.textContent = "アイデアを表示する？";
+    if (btn.textContent == "アイデア表示？") {
+      btn.textContent = "アイデア非表示？";
     } else {
-      btn.textContent = "アイデアを非表示にする？";
+      btn.textContent = "アイデア表示？";
     }
   }
+
+    $(document).on("change", "p input:checkbox", function () {
+   var index = $('p input:checkbox').index(this);
+
+   if($(this).is(':checked')) {
+   $("p input:text").eq(index).attr("disabled", "disabled").css("text-decoration", "line-through");
+   } else {
+   $("p input:text").eq(index).attr("disabled", false).css("text-decoration", "");
+   }
+   });
+
+  $(":checkbox").click(function() {
+
+    if ($(this).is(":checked"))
+    {
+      $(this).closest("tr").css("text-decoration", "line-through");
+    }
+    else {
+      $(this).closest("tr").css("text-decoration", "none");
+    }
+
+  });
+  
 </script>
-<div class="container">
-  <div class="row">
-    <!--ToDo作成画面-->
-    <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-2">
-          <%= image_tag "sanpo.png", width: "150px" %>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-9">
-          </br>
-          <p>お疲れ様。今日は何する？</p>
-          <%= form_with model:@task, url:user_tasks_path, local:true do |f| %>
-            <%= f.text_field :content, class:"form-control w-75" %>
-            <%= f.submit '登録', class: "btn btn-success w-75 mt-2" %>
-          <% end %>
-        </div>
+
+
+<table>
+  <tr>
+    <td><input  type="checkbox"></td><td>テスト</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox"></td><td>テスト2</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox"></td><td>テスト3</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+<!--ToDo投稿-->
+<div class="task-contents">
+  <article>
+    <div class="post-info">
+      <%= image_tag "sanpo.png", width: "100px" ,class:"icon" %>
+      <p class="post-title">お疲れ様。今日は何する？</p>
+      <div class="form">
+        <%= form_with model:@task, url:user_tasks_path, local:true do |f| %>
+          <%= f.text_field :content, class:"form-control w-100" %>
       </div>
-    <!--ToDo一覧画面-->
-      <div class="row">
-        <table class="table table-hover">
-          <tbody>
-            <% @tasks.each do |task| %>
-            <tr>
-              <td>
+      <div class="form-button">
+          <%= f.submit '登録', class: "btn btn-success w-10 mt-2" %>
+      </div>
+        <% end %>
+    </div>
+
+
+    <!--ToDo一覧-->
+    <div class="idea-index ml-5">
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+            <div class="parent">
+              <div>
                 <input type="checkbox" class="mr-2">
-              </td>
-              <td>
+              </div>
+              <div class="task-font">
                 <%= task.content %>
-              </td>
-              <td>
-              </td>
-               <td>
-              </td>
-              <td>
-                <%= link_to edit_user_task_path(task), local:true do %>
-                  <i class="fas fa-pen mr-2"></i>
-                <% end %>
-                <%= link_to user_task_path(task), method: :delete, local:true do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+              </div>
+              <div class="f-right">
+                <%= link_to edit_user_task_path(task), local:true do %><i class="fas fa-pen" style="color: #33CC33;"></i><% end %>
+                <%= link_to user_task_path(task), method: :delete, local:true do %><i class="fas fa-trash-alt" style="color: #CC0033;" ></i><% end %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
     </div>
-    <!--Idea一覧画面-->
-    <div class="col-md-3">
-      <div>
-        <small class="text-muted pull-right">こんなのはどうかな？</small>
-        <%= image_tag "Do.png", width: "150px" %> <br>
-        <button type="button" class="btn btn-outline-secondary mt-1 idea-btn" onclick="hoge()">アイデアを表示する?</button>
-      </div>
+  </article>
+
+
+
+
+
+<!--Idea一覧-->
+  <aside>
+     <div class="post-info2">
+       <%= image_tag "Do.png", width: "100px" ,class:"icon" %>
+       <button type="button" class="btn bg-warning text-white w-10 mt-2 idea-btn" onclick="hoge()">アイデア表示?</button>
     </div>
-    <div class="col-md-3">
-      <h2 class="text-center"><span class="badge">
-          <table class="table-hover">
-            <tbody id="ideaArea">
-              <% @ideas.each do |idea| %>
-              <tr>
-                <td>
-                  <%= idea.content %> <br>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-      </span></h2>
-    </div>
+    <p class="text-center">
+      <table>
+        <br>
+        <tbody class="ideaArea">
+          <% @ideas.each do |idea| %>
+          <tr>
+            <td>
+            <%= idea.content %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </p>
+  </aside>
 </div>
