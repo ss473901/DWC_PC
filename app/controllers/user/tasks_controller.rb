@@ -25,14 +25,21 @@ class User::TasksController < ApplicationController
 
 
   def destroy
-    task = Task.find(params[:id])
-    task.destroy
+    @task = Task.find(params[:id])
+    @task.destroy
     redirect_back(fallback_location: root_path)
+  end
+
+  def toggle
+    head :no_content
+    @task = Task.find(params[:id])
+    @task.is_done = !@task.is_done
+    @task.save
   end
 
 
   private
   def task_params
-    params.require(:task).permit(:content, :is_done)
+    params.require(:task).permit(:content)
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :tasks
     resources :ideas
     resources :funs
+    post '/tasks/:id/toggle' => 'tasks#toggle'
   end
 
   namespace :proposer do

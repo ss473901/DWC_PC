@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.text :content
-      t.boolean :is_done, default: true
+      t.boolean :is_done, default: false
 
       t.timestamps
     end

@@ -12,112 +12,127 @@
 </script>
 
 
-<div class="suggestion">
-
-<!--アイデア提案-->
-  <div class="todo">
-    <div class="col-md-6">
-      ToDoアイデア
-      <%= form_with model:@idea, url:proposer_ideas_path, local:true do |f| %>
-        <%= f.text_field :content, class:"form-control w-100" %>
-        <%= f.submit'提案する', class: "btn btn-success w-10 mt-2" %>
-      <% end %>
+<div class="container-fielud">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><%= image_tag 'sanpo.png', width: "150px" %></div>
+      <div class="col-md-4"></div>
     </div>
-    <table class="table table-hover">
-      <tbody>
-       <% @ideas.each do |idea| %>
-        <tr>
-          <td>
-            <%= idea.content %>
-            <dvi class="edit ml-auto">
-              <i class="fas fa-pen" style="color: #33CC33;" data-toggle="modal" data-target="#exampleModal" type="button" ></i>
-              <%= link_to proposer_idea_path(idea), method: :delete, local:true do %>
-                <i class="fas fa-trash-alt" style="color: #CC0033;" ></i>
-              <% end %>
-            </dvi>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          <span><%= image_tag "sanpo.png", width: "70px" %></span>ToDo編集する？
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <%= form_with url:proposer_funs_path, remote: true do |f| %>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= f.text_area :content, class:"form-control w-100 "  %>
-          </div>
+    <div class="row">
+<!--アイデア投稿-->
+      <div class="col-md-6">
+        <p class="text-center">ToDoアイデア</p>
+        <div class="parent">
+          <%= form_with model:@idea, url:proposer_ideas_path, local:true do |f| %>
+            <%= f.text_field :content, class:"form-control w-75" %>
+            <%= f.submit'提案する', class: "btn btn-success w-10 mt-2" %>
+          <% end %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          <%= f.submit'提案する' ,class:"btn btn-success"%>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!--楽しみ提案-->
-  <div class="fun">
-   <div class="col-md-6">
-        休憩アイデア
-        <%= form_with model:@fun, url:proposer_funs_path, local:true do |f| %>
-          <%= f.text_field :content %>
-          <%= f.submit'提案する' %>
-        <% end %>
+        <table class="table table-hover">
+          <tbody>
+           <% @ideas.each do |idea| %>
+            <tr>
+              <td>
+                <div class="ideaParent">
+                  <div class="task-font">
+                    <%= idea.content %>
+                  </div>
+                  <div class="f-right">
+                    <i class="fas fa-pen" style="color: #33CC33;" data-toggle="modal" data-target="#exampleModal" type="button" ></i>
+                    <%= link_to proposer_idea_path(idea), method: :delete, local:true do %>
+                      <i class="fas fa-trash-alt" style="color: #CC0033;" ></i>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
-      <table class="table table-hover">
-        <tbody>
+<!--休憩投稿-->
+      <div class="col-md-6">
+        <p class="text-center">休憩アイデア</p>
+        <div class="parent">
+           <%= form_with model:@fun, url:proposer_funs_path, local:true do |f| %>
+              <%= f.text_field :content, class:"form-control w-75" %>
+            <%= f.submit'提案する', class: "btn btn-success w-10 mt-2" %>
+          <% end %>
+        </div>
+        <table class="table table-hover">
+          <tbody>
            <% @funs.each do |fun| %>
             <tr>
               <td>
-                <%= fun.content %>
-                <i class="fas fa-pen right" style="color: #33CC33;" data-toggle="modal" data-target="#exampleModal2" type="button" ></i>
-                <%= link_to proposer_fun_path(fun), method: :delete, local:true do %>
-                  <i class="fas fa-trash-alt right" style="color: #CC0033;" ></i>
-                <% end %>
+                <div class="ideaParent">
+                  <div class="task-font">
+                    <%= fun.content %>
+                  </div>
+                  <div class="f-right">
+                    <i class="fas fa-pen" style="color: #33CC33;" data-toggle="modal" data-target="#exampleModal" type="button" ></i>
+                    <%= link_to proposer_fun_path(fun), method: :delete, local:true do %>
+                      <i class="fas fa-trash-alt" style="color: #CC0033;" ></i>
+                    <% end %>
+                  </div>
+                </div>
               </td>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-</div>
+
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <span><%= image_tag "sanpo.png", width: "70px" %></span>ToDo編集する？
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <%= form_with url:proposer_funs_path, remote: true do |f| %>
+            <div class="modal-body">
+              <div class="form-group">
+                <%= f.text_field :content, class:"form-control w-100" %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+              <%= f.submit'提案する' , class: "btn btn-success w-10 mt-2" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
 <!-- Modal2 -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          <span><%= image_tag "sanpo.png", width: "70px" %></span>休憩の提案、編集する？</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <%= form_with model:@fun, url:proposer_funs_path, local:true do |f| %>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= f.text_area :content, class:"form-control w-100"  %>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <span><%= image_tag "sanpo.png", width: "70px" %></span>休憩の提案、編集する？</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
+            <%= form_with model:@fun, url:proposer_funs_path, local:true do |f| %>
+            <div class="modal-body">
+              <div class="form-group">
+                <%= f.text_area :content, class:"form-control w-100"  %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+              <%= f.submit'提案する' ,class:"btn btn-success"%>
+            </div>
+          <% end %>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          <%= f.submit'提案する' ,class:"btn btn-success"%>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-</div>
