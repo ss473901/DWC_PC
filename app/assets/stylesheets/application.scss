@@ -248,3 +248,27 @@ article {
 .ideabutton{
   margin-top: 60px;
 }
+
+.btn-deco:hover{
+  text-decoration: underline double;
+}
+
+
+#box {
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: #ff2bc2;
+}
+
+.blue {
+  background-color: #2b85ff;
+}
+
+//ToDoリスト
+.done {
+  text-decoration: line-through;
+  color: grey;
+}

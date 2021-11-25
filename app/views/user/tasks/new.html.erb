@@ -1,31 +1,71 @@
 <script>
-  function hoge() {
-    // 要素の表示・非表示
+function hoge() {
+// 要素の表示・非表示
 
-    var obj = document.getElementsByClassName("ideaArea")[0];
-    if (obj.style.display == "none") {
-      obj.style.display = "block";
-    } else {
-      obj.style.display = "none";
-    }
+var obj = document.getElementsByClassName("ideaArea")[0];
+if (obj.style.display == "block") {
+  obj.style.display = "none";
+} else {
+  obj.style.display = "block";
+}
 
-    // ボタンのテキストも変更
-    var btn = document.getElementsByClassName("idea-btn")[0];
-    if (btn.textContent == "アイデア表示？") {
-      btn.textContent = "アイデア非表示？";
-    } else {
-      btn.textContent = "アイデア表示？";
-    }
-  }
+// ボタンのテキストも変更
+var btn = document.getElementsByClassName("idea-btn")[0];
+if (btn.textContent == "アイデア表示？") {
+  btn.textContent = "アイデア非表示？";
+} else {
+  btn.textContent = "アイデア表示？";
+}
+}
 
-  $(function(){
+$(function(){
   $("input[type=checkbox]").click(function(){
   $.post('/tasks/' + $(this).data('id') + '/toggle');
   });
+
+  setTimeout(() => {
+    const childElement = document.querySelector('#child');
+    // #child要素を取り除く
+    childElement.remove();
+    }, 3000);
+
+  //ToDoリスト テスト
+  var buttonList = document.querySelectorAll('button');
+    console.log(buttonList);
+    buttonList.forEach((button) => {
+    console.log("abc");
+    button.addEventListener('click', () => {
+    var li = button.closest('div');
+    console.log(li);
+    li.classList.add('done');
+    setTimeout(() => {
+    li.remove();
+    }, 3000);
+    });
   });
 
-</script>
+  //ToDoリスト テスト2
+  var buttonList = document.querySelectorAll('input');
+    console.log(buttonList);
+    buttonList.forEach((button) => {
+    console.log("abc");
+    button.addEventListener('click', () => {
+    var li = button.closest('div');
+    console.log(li);
+    li.classList.add('done');
+    setTimeout(() => {
+    li.remove();
+    }, 3000);
+    });
+  });
 
+
+});
+
+
+
+
+</script>
 
 <div class="container-fluid">
   <div class="row">
@@ -57,6 +97,7 @@
                 <div class="parent mb-2">
                   <div>
                     <%= check_box_tag '', '', task.is_done, {'data-id' => task.id } %>
+
                   </div>
                   <div class="task-font ml-2">
                     <%= task.content %>
@@ -95,3 +136,26 @@
       </div>
   </div>
 </div>
+
+
+<ul>
+  <li>Todo 1 <button>done</button></li>
+  <li>Todo 2 <button>done</button></li>
+  <li>Todo 3 <button>done</button></li>
+</ul>
+
+
+  <% @tasks.each do |task| %>
+    <tr>
+      <td>
+        <div class="parent mb-2">
+          <div class="task-font ml-2">
+            <input type="checkbox" name="example" value="サンプル">
+            <%= task.content %>
+            <%= link_to edit_user_task_path(task), local:true do %><i class="fas fa-pen" style="color: #33CC33;"></i><% end %>
+            <%= link_to user_task_path(task), method: :delete, data:{ confirm: '削除してもよろしいですか？'}  do %><i class="fas fa-trash-alt" style="color: #CC0033;" ></i><% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
