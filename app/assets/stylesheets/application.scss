@@ -19,7 +19,7 @@
 
 //フォント
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap');
-h6,,h5,h4,h3,h2,h1,p,div {
+h6,h5,h4,h3,h2,h1,p,div {
  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -185,14 +185,9 @@ article {
   display: flex;
 }
 
-
-
 .task-font{
   font-size: 20px;
 }
-
-
-
 
 // task投稿
 .taskForm{
@@ -253,7 +248,6 @@ article {
   text-decoration: underline double;
 }
 
-
 #box {
   width: 100px;
   height: 100px;
@@ -272,3 +266,10 @@ article {
   text-decoration: line-through;
   color: grey;
 }
+
+
+// 実験
+.zikken{
+  display:none;
+}
+

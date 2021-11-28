@@ -35,7 +35,7 @@ $(function(){
     buttonList.forEach((button) => {
     console.log("abc");
     button.addEventListener('click', () => {
-    var li = button.closest('div');
+    var li = button.closest('li');
     console.log(li);
     li.classList.add('done');
     setTimeout(() => {
@@ -43,28 +43,7 @@ $(function(){
     }, 3000);
     });
   });
-
-  //ToDoリスト テスト2
-  var buttonList = document.querySelectorAll('input');
-    console.log(buttonList);
-    buttonList.forEach((button) => {
-    console.log("abc");
-    button.addEventListener('click', () => {
-    var li = button.closest('div');
-    console.log(li);
-    li.classList.add('done');
-    setTimeout(() => {
-    li.remove();
-    }, 3000);
-    });
-  });
-
-
 });
-
-
-
-
 </script>
 
 <div class="container-fluid">
@@ -97,7 +76,6 @@ $(function(){
                 <div class="parent mb-2">
                   <div>
                     <%= check_box_tag '', '', task.is_done, {'data-id' => task.id } %>
-
                   </div>
                   <div class="task-font ml-2">
                     <%= task.content %>
@@ -138,24 +116,30 @@ $(function(){
 </div>
 
 
-<ul>
-  <li>Todo 1 <button>done</button></li>
-  <li>Todo 2 <button>done</button></li>
-  <li>Todo 3 <button>done</button></li>
-</ul>
-
-
-  <% @tasks.each do |task| %>
-    <tr>
-      <td>
-        <div class="parent mb-2">
-          <div class="task-font ml-2">
-            <input type="checkbox" name="example" value="サンプル">
-            <%= task.content %>
-            <%= link_to edit_user_task_path(task), local:true do %><i class="fas fa-pen" style="color: #33CC33;"></i><% end %>
-            <%= link_to user_task_path(task), method: :delete, data:{ confirm: '削除してもよろしいですか？'}  do %><i class="fas fa-trash-alt" style="color: #CC0033;" ></i><% end %>
+<!--実験-->
+<div  class="zikken">
+  <ul>
+    <li>Todo 1 <button>done</button></li>
+    <li>Todo 2 <button>done</button></li>
+    <li>Todo 3 <button>done</button></li>
+  </ul>
+  
+  
+    <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <div class="parent mb-2">
+            <li class="task-font ml-2">
+            <button>
+              <%= check_box_tag '', '', task.is_done, {'data-id' => task.id } %>
+            </button>
+              <%= task.content %>
+              <%= link_to edit_user_task_path(task), local:true do %><i class="fas fa-pen" style="color: #33CC33;"></i><% end %>
+              <%= link_to user_task_path(task), method: :delete, data:{ confirm: '削除してもよろしいですか？'}  do %><i class="fas fa-trash-alt" style="color: #CC0033;" ></i><% end %>
+            </li>
+  
           </div>
-        </div>
-      </td>
-    </tr>
-  <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </div>
